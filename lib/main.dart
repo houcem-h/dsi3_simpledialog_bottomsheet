@@ -12,24 +12,31 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.teal,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyDialogExampleAppPage(title: 'Dialog Example App'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
+class MyDialogExampleAppPage extends StatefulWidget {
+  const MyDialogExampleAppPage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<MyDialogExampleAppPage> createState() => _MyDialogExampleAppState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
+
+  String _choice = "No choice yet!";
+
+  void _pickChoice() {
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,21 +48,25 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            RaisedButton(
+              color: Colors.teal,
+              textColor: Colors.white,
+                child: const Text("open Simple dialog"),
+                onPressed: _pickChoice
             ),
+            const Text('This is the choice you made : '),
             Text(
-              'test',
-              style: Theme.of(context).textTheme.headline4,
+              _choice,
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                  fontSize: 30
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: null,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
+      backgroundColor: Colors.tealAccent,
     );
   }
 }
