@@ -95,6 +95,9 @@ class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
       case choicesList.plane:
         _setChoice("Plane");
         break;
+        default:
+        _setChoice("No choice !");
+        break;
     }
   }
 
