@@ -66,9 +66,9 @@ class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
     }
   }
     Future<void> _pickChoiceFromBottomSheet() async {
-    switch (await showDialog<choicesList>(
+    switch (await showModalBottomSheet<choicesList>(
         context: context,
-        barrierDismissible: false,
+        isDismissible: false,
         builder: (BuildContext context) {
           return ModalBottomSheetWidget();
         })) {
