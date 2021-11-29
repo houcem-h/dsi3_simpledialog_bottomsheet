@@ -80,7 +80,9 @@ class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
                 textColor: Colors.white,
                 child: const Text("open Simple dialog"),
                 onPressed: _pickChoice),
+            const Padding(padding: EdgeInsets.only(bottom: 30)),
             const Text('This is the choice you made : '),
+            const Padding(padding: EdgeInsets.only(bottom: 15)),
             Text(
               _choice,
               style: const TextStyle(
