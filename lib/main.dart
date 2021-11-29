@@ -1,5 +1,6 @@
-import './simple_dialog_widget.dart';
 import 'package:flutter/material.dart';
+import './simple_dialog_widget.dart';
+import './modal_bottom_sheet.dart';
 
 import './choice_list.dart';
 
@@ -43,12 +44,33 @@ class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
     });
   }
 
-    Future<void> _pickChoice() async {
+    Future<void> _pickChoiceFromSimpleDialog() async {
     switch (await showDialog<choicesList>(
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
           return SimpleDialogWidget();
+        })) {
+      case choicesList.boat:
+        _setChoice("Boat");
+        break;
+      case choicesList.car:
+        _setChoice("Car");
+        break;
+      case choicesList.plane:
+        _setChoice("Plane");
+        break;
+        default:
+        _setChoice("No choice !");
+        break;
+    }
+  }
+    Future<void> _pickChoiceFromBottomSheet() async {
+    switch (await showDialog<choicesList>(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return ModalBottomSheetWidget();
         })) {
       case choicesList.boat:
         _setChoice("Boat");
@@ -79,13 +101,13 @@ class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
                 color: Colors.teal,
                 textColor: Colors.white,
                 child: const Text("Favourite mean of transport (SimpleDialog)"),
-                onPressed: _pickChoice
+                onPressed: _pickChoiceFromSimpleDialog
             ),
             RaisedButton(
                 color: Colors.teal,
                 textColor: Colors.white,
                 child: const Text("Favourite mean of transport (BottomSheet)"),
-                onPressed: _pickChoice
+                onPressed: _pickChoiceFromBottomSheet
             ),
             const Padding(padding: EdgeInsets.only(bottom: 30)),
             const Text('This is the choice you made : '),
