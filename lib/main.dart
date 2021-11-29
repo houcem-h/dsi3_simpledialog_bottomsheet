@@ -78,8 +78,15 @@ class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
             RaisedButton(
                 color: Colors.teal,
                 textColor: Colors.white,
-                child: const Text("open Simple dialog"),
-                onPressed: _pickChoice),
+                child: const Text("Favourite mean of transport (SimpleDialog)"),
+                onPressed: _pickChoice
+            ),
+            RaisedButton(
+                color: Colors.teal,
+                textColor: Colors.white,
+                child: const Text("Favourite mean of transport (BottomSheet)"),
+                onPressed: _pickChoice
+            ),
             const Padding(padding: EdgeInsets.only(bottom: 30)),
             const Text('This is the choice you made : '),
             const Padding(padding: EdgeInsets.only(bottom: 15)),
