@@ -125,7 +125,7 @@ class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
               _choice,
               style: const TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.teal,
                   fontSize: 30),
             ),
           ],
