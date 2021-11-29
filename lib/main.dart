@@ -37,6 +37,7 @@ class MyDialogExampleAppPage extends StatefulWidget {
 
 class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
   String _choice = "No choice yet!";
+  String _source = "";
 
   void _setChoice(String choice) {
     setState(() {
@@ -44,7 +45,14 @@ class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
     });
   }
 
+  void _setSource(String source) {
+    setState(() {
+      _source = "with $source";
+    });
+  }
+
     Future<void> _pickChoiceFromSimpleDialog() async {
+    _setSource("SimpleDialog");
     switch (await showDialog<choicesList>(
         context: context,
         barrierDismissible: false,
@@ -66,6 +74,7 @@ class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
     }
   }
     Future<void> _pickChoiceFromBottomSheet() async {
+    _setSource("BottomSheet");
     switch (await showModalBottomSheet<choicesList>(
         context: context,
         isDismissible: false,
@@ -110,7 +119,7 @@ class _MyDialogExampleAppState extends State<MyDialogExampleAppPage> {
                 onPressed: _pickChoiceFromBottomSheet
             ),
             const Padding(padding: EdgeInsets.only(bottom: 30)),
-            const Text('This is the choice you made : '),
+            Text('This is the choice you made $_source: '),
             const Padding(padding: EdgeInsets.only(bottom: 15)),
             Text(
               _choice,
